@@ -1,6 +1,4 @@
-using backend.Models;
-
-namespace backend.DTOs;
+namespace backend.Models.Dto;
 
 public class TodoDto
 {

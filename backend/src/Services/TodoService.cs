@@ -17,4 +17,10 @@ public class TodoService
         var todos = _todoRepository.GetTodos();
         return todos;
     }
+
+    public Todo GetTodoById(Guid todoId)
+    {
+        var todo = _todoRepository.GetTodoById(todoId);
+        return todo;
+    }
 }

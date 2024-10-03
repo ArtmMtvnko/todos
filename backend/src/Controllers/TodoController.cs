@@ -26,4 +26,18 @@ public class TodoController : Controller
 
         return Ok(todos);
     }
+
+    [HttpGet("{id}")]
+    public IActionResult GetById(Guid id)
+    {
+        var todo = _todoService.GetTodoById(id);
+
+        if (!ModelState.IsValid)
+            return BadRequest(ModelState);
+
+        if (todo == null)
+            return NotFound();
+
+        return Ok(todo);
+    }
 }
