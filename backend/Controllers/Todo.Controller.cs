@@ -1,4 +1,4 @@
-using backend.Entities;
+using backend.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace backend.Controllers;
@@ -6,14 +6,14 @@ namespace backend.Controllers;
 [ApiController]
 [Route("[controller]")]
 public class TodoController : ControllerBase
-{   
+{
     [HttpGet]
     public List<Todo> GetAll()
     {
         return new List<Todo>()
         {
-            new Todo() { Title = "Test", Content = "Test content" },
-            new Todo() { Title = "Test 2", Content = "Test content 2" }
+            new Todo() { Id = 1, Title = "Test", Content = "Test content" },
+            new Todo() { Id = 2, Title = "Test 2", Content = "Test content 2" }
         };
     }
 }
