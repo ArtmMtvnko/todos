@@ -1,4 +1,7 @@
 using backend.Data;
+using backend.Interfaces;
+using backend.Repository;
+using backend.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -22,6 +25,9 @@ builder.Services.AddDbContext<DataContext>(options =>
 
     options.UseNpgsql(connectionString);
 });
+
+builder.Services.AddScoped<TodoService>();
+builder.Services.AddScoped<ITodoRepository, TodoRepository>();
 
 var app = builder.Build();
 
