@@ -1,7 +1,7 @@
-using backend.Data;
-using backend.Interfaces;
-using backend.Repository;
-using backend.Services;
+using backend.src.Data;
+using backend.src.Interfaces;
+using backend.src.Repository;
+using backend.src.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
