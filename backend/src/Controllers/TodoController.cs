@@ -1,9 +1,8 @@
-using backend.Models;
-using backend.Services;
+using backend.src.Models;
+using backend.src.Services;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
-namespace backend.Controllers;
+namespace backend.src.Controllers;
 
 [ApiController]
 [Route("[controller]")]

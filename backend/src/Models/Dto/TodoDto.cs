@@ -1,4 +1,4 @@
-namespace backend.Models.Dto;
+namespace backend.src.Models.Dto;
 
 public class TodoDto
 {

@@ -1,7 +1,7 @@
-using backend.Interfaces;
-using backend.Models;
+using backend.src.Interfaces;
+using backend.src.Models;
 
-namespace backend.Services;
+namespace backend.src.Services;
 
 public class TodoService
 {

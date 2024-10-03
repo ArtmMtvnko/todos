@@ -1,7 +1,7 @@
-using backend.Models.Dto;
-using backend.Models;
+using backend.src.Models.Dto;
+using backend.src.Models;
 
-namespace backend.Interfaces;
+namespace backend.src.Interfaces;
 
 public interface ITodoRepository
 {

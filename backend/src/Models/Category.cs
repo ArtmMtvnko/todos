@@ -1,4 +1,4 @@
-namespace backend.Models;
+namespace backend.src.Models;
 
 public class Category
 {

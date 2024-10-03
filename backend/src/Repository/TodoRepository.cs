@@ -1,9 +1,9 @@
-using backend.Data;
-using backend.Interfaces;
-using backend.Models;
-using backend.Models.Dto;
+using backend.src.Data;
+using backend.src.Interfaces;
+using backend.src.Models;
+using backend.src.Models.Dto;
 
-namespace backend.Repository;
+namespace backend.src.Repository;
 
 public class TodoRepository : ITodoRepository
 {
