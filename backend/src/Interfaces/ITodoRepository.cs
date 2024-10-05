@@ -9,5 +9,5 @@ public interface ITodoRepository
 
     Todo GetTodoById(Guid todoId);
 
-    Todo CreateTodo(TodoDto todoDto);
+    Todo CreateTodo(CreateTodoDto createTodoDto);
 }
