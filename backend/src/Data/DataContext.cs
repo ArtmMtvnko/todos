@@ -18,5 +18,7 @@ public class DataContext : DbContext
             .HasOne(todo => todo.Category)
             .WithMany(category => category.Todos)
             .HasForeignKey(todo => todo.CategoryId);
+
+        base.OnModelCreating(modelBuilder);
     }
 }

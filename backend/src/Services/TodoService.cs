@@ -3,7 +3,7 @@ using backend.src.Models.Dto;
 
 namespace backend.src.Services;
 
-public class TodoService
+public class TodoService : ITodoService
 {
     private readonly ITodoRepository _todoRepository;
 
@@ -22,5 +22,10 @@ public class TodoService
     {
         var todo = await _todoRepository.GetTodoById(todoId);
         return todo;
+    }
+
+    public Task<TodoDto> CreateTodo(CreateTodoDto createTodoDto)
+    {
+        throw new NotImplementedException();
     }
 }
