@@ -1,13 +1,12 @@
 using backend.src.Models.Dto;
-using backend.src.Models;
 
 namespace backend.src.Interfaces;
 
 public interface ITodoRepository
 {
-    ICollection<Todo> GetTodos();
+    ICollection<TodoDto> GetTodos();
 
-    Todo GetTodoById(Guid todoId);
+    TodoDto GetTodoById(Guid todoId);
 
-    Todo CreateTodo(CreateTodoDto createTodoDto);
+    TodoDto CreateTodo(CreateTodoDto createTodoDto);
 }

@@ -1,6 +1,5 @@
 using backend.src.Data;
 using backend.src.Interfaces;
-using backend.src.Models;
 using backend.src.Models.Dto;
 using Microsoft.EntityFrameworkCore;
 
@@ -15,7 +14,7 @@ public class TodoRepository : ITodoRepository
         _context = context;
     }
 
-    public ICollection<Todo> GetTodos()
+    public ICollection<TodoDto> GetTodos()
     {
         return _context.Todos
             .OrderBy(todo => todo.CreatedAt)
@@ -23,14 +22,15 @@ public class TodoRepository : ITodoRepository
             .ToList();
     }
 
-    public Todo GetTodoById(Guid todoId)
+    public TodoDto GetTodoById(Guid todoId)
     {
         return _context.Todos
             .Where(todo => todo.Id == todoId)
+            .Include(todo => todo.Category)
             .First();
     }
 
-    public Todo CreateTodo(CreateTodoDto createTodoDto)
+    public TodoDto CreateTodo(CreateTodoDto createTodoDto)
     {
         throw new NotImplementedException();
     }

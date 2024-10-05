@@ -1,5 +1,5 @@
 using backend.src.Interfaces;
-using backend.src.Models;
+using backend.src.Models.Dto;
 
 namespace backend.src.Services;
 
@@ -12,13 +12,13 @@ public class TodoService
         _todoRepository = todoRepository;
     }
 
-    public IEnumerable<Todo> GetTodos()
+    public IEnumerable<TodoDto> GetTodos()
     {
         var todos = _todoRepository.GetTodos();
         return todos;
     }
 
-    public Todo GetTodoById(Guid todoId)
+    public TodoDto GetTodoById(Guid todoId)
     {
         var todo = _todoRepository.GetTodoById(todoId);
         return todo;
