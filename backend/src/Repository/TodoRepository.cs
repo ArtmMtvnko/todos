@@ -14,23 +14,23 @@ public class TodoRepository : ITodoRepository
         _context = context;
     }
 
-    public ICollection<TodoDto> GetTodos()
+    public async Task<ICollection<TodoDto>> GetTodos()
     {
-        return _context.Todos
+        return await _context.Todos
             .OrderBy(todo => todo.CreatedAt)
             .Include(todo => todo.Category)
-            .ToList();
+            .ToListAsync();
     }
 
-    public TodoDto GetTodoById(Guid todoId)
+    public async Task<TodoDto> GetTodoById(Guid todoId)
     {
-        return _context.Todos
+        return await _context.Todos
             .Where(todo => todo.Id == todoId)
             .Include(todo => todo.Category)
-            .First();
+            .FirstAsync();
     }
 
-    public TodoDto CreateTodo(CreateTodoDto createTodoDto)
+    public Task<TodoDto> CreateTodo(CreateTodoDto createTodoDto)
     {
         throw new NotImplementedException();
     }

@@ -4,9 +4,9 @@ namespace backend.src.Interfaces;
 
 public interface ITodoRepository
 {
-    ICollection<TodoDto> GetTodos();
+    Task<ICollection<TodoDto>> GetTodos();
 
-    TodoDto GetTodoById(Guid todoId);
+    Task<TodoDto> GetTodoById(Guid todoId);
 
-    TodoDto CreateTodo(CreateTodoDto createTodoDto);
+    Task<TodoDto> CreateTodo(CreateTodoDto createTodoDto);
 }

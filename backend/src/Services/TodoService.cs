@@ -12,15 +12,15 @@ public class TodoService
         _todoRepository = todoRepository;
     }
 
-    public IEnumerable<TodoDto> GetTodos()
+    public async Task<IEnumerable<TodoDto>> GetTodos()
     {
-        var todos = _todoRepository.GetTodos();
+        var todos = await _todoRepository.GetTodos();
         return todos;
     }
 
-    public TodoDto GetTodoById(Guid todoId)
+    public async Task<TodoDto> GetTodoById(Guid todoId)
     {
-        var todo = _todoRepository.GetTodoById(todoId);
+        var todo = await _todoRepository.GetTodoById(todoId);
         return todo;
     }
 }

@@ -1,4 +1,3 @@
-using backend.src.Models;
 using backend.src.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -16,23 +15,23 @@ public class TodoController : Controller
     }
     
     [HttpGet]
-    public IActionResult GetAll()
+    public async Task<IActionResult> GetAll()
     {
-        var todos = _todoService.GetTodos();
-
         if (!ModelState.IsValid)
             return BadRequest(ModelState);
+
+        var todos = await _todoService.GetTodos();
 
         return Ok(todos);
     }
 
     [HttpGet("{id}")]
-    public IActionResult GetById(Guid id)
+    public async Task<IActionResult> GetById(Guid id)
     {
-        var todo = _todoService.GetTodoById(id);
-
         if (!ModelState.IsValid)
             return BadRequest(ModelState);
+
+        var todo = await _todoService.GetTodoById(id);
 
         if (todo == null)
             return NotFound();
