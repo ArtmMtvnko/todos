@@ -26,7 +26,7 @@ builder.Services.AddDbContext<DataContext>(options =>
     options.UseNpgsql(connectionString);
 });
 
-builder.Services.AddScoped<TodoService>();
+builder.Services.AddScoped<ITodoService, TodoService>();
 builder.Services.AddScoped<ITodoRepository, TodoRepository>();
 
 var app = builder.Build();

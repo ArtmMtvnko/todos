@@ -29,4 +29,10 @@ public class TodoService : ITodoService
         var createdTodo = await _todoRepository.CreateTodo(createTodoDto);
         return createdTodo;
     }
+
+    public async Task<TodoDto> UpdateTodo(Guid todoId, CreateTodoDto updateTodoDto)
+    {
+        var updatedTodoDto = await _todoRepository.UpdateTodo(todoId, updateTodoDto);
+        return updatedTodoDto;
+    }
 }

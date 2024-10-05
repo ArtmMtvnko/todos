@@ -1,6 +1,7 @@
 using backend.src.Data;
 using backend.src.Interfaces;
 using backend.src.Models.Dto;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace backend.src.Repository;
@@ -32,7 +33,8 @@ public class TodoRepository : ITodoRepository
 
     public async Task<TodoDto> CreateTodo(CreateTodoDto createTodoDto)
     {        
-        var createdTodo = new TodoDto() {
+        var createdTodo = new TodoDto()
+        {
             Id = Guid.NewGuid(),
             Title = createTodoDto.Title,
             Content = createTodoDto.Content,
@@ -51,6 +53,25 @@ public class TodoRepository : ITodoRepository
             throw new Exception("Date was not saved. Something went wrong");
 
         return createdTodo;
+    }
+
+    public async Task<TodoDto> UpdateTodo(Guid todoId, CreateTodoDto updateTodoDto)
+    {
+        var existedTodo = await GetTodoById(todoId);
+
+        if (existedTodo == null)
+            throw new Exception($"Entity with id [{todoId}] has not been found");
+
+        existedTodo.Title = updateTodoDto.Title;
+        existedTodo.Content = updateTodoDto.Content;
+        existedTodo.CategoryId = updateTodoDto.CategoryId;
+
+        bool saved = await Save();
+
+        if (!saved)
+            throw new Exception("Date was not saved. Something went wrong");
+
+        return existedTodo;
     }
 
     private async Task<bool> Save()

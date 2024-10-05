@@ -1,5 +1,5 @@
+using backend.src.Interfaces;
 using backend.src.Models.Dto;
-using backend.src.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace backend.src.Controllers;
@@ -8,9 +8,9 @@ namespace backend.src.Controllers;
 [Route("[controller]")]
 public class TodoController : Controller
 {
-    private readonly TodoService _todoService;
+    private readonly ITodoService _todoService;
     
-    public TodoController(TodoService todoService)
+    public TodoController(ITodoService todoService)
     {
         _todoService = todoService;
     }
@@ -43,7 +43,20 @@ public class TodoController : Controller
     [HttpPost]
     public async Task<IActionResult> Create([FromBody] CreateTodoDto createTodoDto)
     {
+        if (createTodoDto == null)
+            return BadRequest(ModelState);
+        
         var createdTodo = await _todoService.CreateTodo(createTodoDto);
         return Ok(createdTodo);
+    }
+
+    [HttpPut("{id}")]
+    public async Task<IActionResult> Update([FromRoute] Guid id, [FromBody] CreateTodoDto updateTodoDto)
+    {
+        if (updateTodoDto == null)
+            return BadRequest(ModelState);
+
+        var updatedTodoDto = await _todoService.UpdateTodo(id, updateTodoDto);
+        return Ok(updatedTodoDto);
     }
 }
