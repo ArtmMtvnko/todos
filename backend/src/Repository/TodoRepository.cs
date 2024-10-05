@@ -30,8 +30,32 @@ public class TodoRepository : ITodoRepository
             .FirstAsync();
     }
 
-    public Task<TodoDto> CreateTodo(CreateTodoDto createTodoDto)
+    public async Task<TodoDto> CreateTodo(CreateTodoDto createTodoDto)
+    {        
+        var createdTodo = new TodoDto() {
+            Id = Guid.NewGuid(),
+            Title = createTodoDto.Title,
+            Content = createTodoDto.Content,
+            CreatedAt = DateTime.UtcNow,
+            CategoryId = createTodoDto.CategoryId,
+            Category = _context.Categories
+                            .Where(c => c.Id == createTodoDto.CategoryId)
+                            .First()
+        };
+
+        await _context.Todos.AddAsync(createdTodo);
+
+        bool saved = await Save();
+
+        if (!saved)
+            throw new Exception("Date was not saved. Something went wrong");
+
+        return createdTodo;
+    }
+
+    private async Task<bool> Save()
     {
-        throw new NotImplementedException();
+        var saved = await _context.SaveChangesAsync();
+        return saved > 0 ? true : false;
     }
 }

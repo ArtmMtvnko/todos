@@ -1,3 +1,4 @@
+using backend.src.Models.Dto;
 using backend.src.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -26,7 +27,7 @@ public class TodoController : Controller
     }
 
     [HttpGet("{id}")]
-    public async Task<IActionResult> GetById(Guid id)
+    public async Task<IActionResult> GetById([FromRoute] Guid id)
     {
         if (!ModelState.IsValid)
             return BadRequest(ModelState);
@@ -37,5 +38,12 @@ public class TodoController : Controller
             return NotFound();
 
         return Ok(todo);
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> Create([FromBody] CreateTodoDto createTodoDto)
+    {
+        var createdTodo = await _todoService.CreateTodo(createTodoDto);
+        return Ok(createdTodo);
     }
 }

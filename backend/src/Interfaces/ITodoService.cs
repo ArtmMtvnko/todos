@@ -1,4 +1,3 @@
-using backend.src.Models;
 using backend.src.Models.Dto;
 
 namespace backend.src.Interfaces;

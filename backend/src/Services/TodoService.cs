@@ -24,8 +24,9 @@ public class TodoService : ITodoService
         return todo;
     }
 
-    public Task<TodoDto> CreateTodo(CreateTodoDto createTodoDto)
+    public async Task<TodoDto> CreateTodo(CreateTodoDto createTodoDto)
     {
-        throw new NotImplementedException();
+        var createdTodo = await _todoRepository.CreateTodo(createTodoDto);
+        return createdTodo;
     }
 }
