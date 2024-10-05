@@ -32,10 +32,10 @@ public class TodoController : Controller
         if (!ModelState.IsValid)
             return BadRequest(ModelState);
 
-        var todo = await _todoService.GetTodoById(id);
-
-        if (todo == null)
+        if (!await _todoService.TodoExist(id))
             return NotFound();
+
+        var todo = await _todoService.GetTodoById(id);
 
         return Ok(todo);
     }
@@ -55,8 +55,21 @@ public class TodoController : Controller
     {
         if (updateTodoDto == null)
             return BadRequest(ModelState);
+        
+        if (!await _todoService.TodoExist(id))
+            return NotFound();
 
         var updatedTodoDto = await _todoService.UpdateTodo(id, updateTodoDto);
         return Ok(updatedTodoDto);
+    }
+
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> Delete([FromRoute] Guid id)
+    {
+        if (!await _todoService.TodoExist(id))
+            return NotFound();
+        
+        await _todoService.DeleteTodo(id);
+        return NoContent();
     }
 }

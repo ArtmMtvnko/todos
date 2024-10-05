@@ -12,6 +12,11 @@ public class TodoService : ITodoService
         _todoRepository = todoRepository;
     }
 
+    public async Task<bool> TodoExist(Guid todoId)
+    {
+        return await _todoRepository.TodoExist(todoId);
+    }
+
     public async Task<IEnumerable<TodoDto>> GetTodos()
     {
         var todos = await _todoRepository.GetTodos();
@@ -34,5 +39,10 @@ public class TodoService : ITodoService
     {
         var updatedTodoDto = await _todoRepository.UpdateTodo(todoId, updateTodoDto);
         return updatedTodoDto;
+    }
+
+    public async Task DeleteTodo(Guid todoId)
+    {
+        await _todoRepository.DeleteTodo(todoId);
     }
 }

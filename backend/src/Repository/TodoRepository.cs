@@ -1,7 +1,6 @@
 using backend.src.Data;
 using backend.src.Interfaces;
 using backend.src.Models.Dto;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace backend.src.Repository;
@@ -13,6 +12,16 @@ public class TodoRepository : ITodoRepository
     public TodoRepository(DataContext context)
     {
         _context = context;
+    }
+
+    private async Task<bool> Save()
+    {
+        var saved = await _context.SaveChangesAsync();
+        return saved > 0 ? true : false;
+    }
+
+    public async Task<bool> TodoExist(Guid todoId) {
+        return await _context.Todos.AnyAsync(todo => todo.Id == todoId);
     }
 
     public async Task<ICollection<TodoDto>> GetTodos()
@@ -74,9 +83,18 @@ public class TodoRepository : ITodoRepository
         return existedTodo;
     }
 
-    private async Task<bool> Save()
+    public async Task DeleteTodo(Guid todoId)
     {
-        var saved = await _context.SaveChangesAsync();
-        return saved > 0 ? true : false;
+        var todoToRemove = await _context.Todos.FindAsync(todoId);
+
+        if (todoToRemove == null)
+            throw new Exception($"Entity with id [{todoId}] has not been found");
+        
+        _context.Todos.Remove(todoToRemove);
+
+        bool saved = await Save();
+
+        if (!saved)
+            throw new Exception("Date was not saved. Something went wrong");
     }
 }
