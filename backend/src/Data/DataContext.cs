@@ -15,10 +15,15 @@ public class DataContext : DbContext
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Todo>()
-            .HasOne(todo => todo.Category)
-            .WithMany(category => category.Todos)
-            .HasForeignKey(todo => todo.CategoryId);
+            .HasOne(entity => entity.Category)
+            .WithMany(entity => entity.Todos)
+            .HasForeignKey(entity => entity.CategoryId)
+            .IsRequired();
 
-        base.OnModelCreating(modelBuilder);
+        modelBuilder.Entity<Category>()
+            .HasMany(entity => entity.Todos)
+            .WithOne(entity => entity.Category)
+            .HasForeignKey(entity => entity.CategoryId)
+            .IsRequired();
     }
 }
