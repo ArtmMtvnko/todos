@@ -50,8 +50,8 @@ public class TodoRepository : ITodoRepository
             CreatedAt = DateTime.UtcNow,
             CategoryId = createTodoDto.CategoryId,
             Category = _context.Categories
-                            .Where(c => c.Id == createTodoDto.CategoryId)
-                            .First()
+                .Where(c => c.Id == createTodoDto.CategoryId)
+                .First()
         };
 
         await _context.Todos.AddAsync(createdTodo);
@@ -59,7 +59,7 @@ public class TodoRepository : ITodoRepository
         bool saved = await Save();
 
         if (!saved)
-            throw new Exception("Date was not saved. Something went wrong");
+            throw new Exception("Data was not saved. Something went wrong");
 
         return createdTodo;
     }
@@ -78,7 +78,7 @@ public class TodoRepository : ITodoRepository
         bool saved = await Save();
 
         if (!saved)
-            throw new Exception("Date was not saved. Something went wrong");
+            throw new Exception("Data was not saved. Something went wrong");
 
         return existedTodo;
     }
@@ -95,6 +95,6 @@ public class TodoRepository : ITodoRepository
         bool saved = await Save();
 
         if (!saved)
-            throw new Exception("Date was not saved. Something went wrong");
+            throw new Exception("Data was not saved. Something went wrong");
     }
 }
