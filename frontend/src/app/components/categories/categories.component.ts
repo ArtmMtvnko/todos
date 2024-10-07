@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 
 @Component({
     selector: 'categories',
-    template: '',
+    standalone: true,
+    templateUrl: './categories.component.html',
+    styleUrl: './categories.component.scss',
 })
 export class CategoriesComponent {}

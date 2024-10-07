@@ -1,0 +1,17 @@
+:host {
+    margin: 0;
+    padding: 0;
+    grid-area: todos;
+    height: 100%;
+}
+
+.todos-container {
+    margin: 0;
+    padding: 15px 0;
+    height: 100%;
+
+    background-image: url("../../../../public/show.jpg");
+    background-size: cover;
+    border-top-right-radius: var(--window-border-radius);
+    border-bottom-right-radius: var(--window-border-radius);
+}

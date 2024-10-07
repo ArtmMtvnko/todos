@@ -1,0 +1,7 @@
+<div class="todos-container">
+    <div class="todos">
+        @for (todo of todos; track todo.id) {
+            <todo [todo]="todo" />
+        }
+    </div>
+</div>
