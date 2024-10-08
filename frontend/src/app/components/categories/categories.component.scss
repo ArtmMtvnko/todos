@@ -3,6 +3,16 @@
 }
 
 .categories {
-    margin: 10px;
-    border-bottom: 1px solid #9d9fa3d6;
+    margin: var(--category-margin) 0;
+    position: relative;
+
+    &::after {
+        content: '';
+        position: absolute;
+        height: 1px;
+        background-color: #9d9fa3d6;
+        left: 50%;
+        transform: translateX(-50%);
+        width: calc(100% - var(--category-margin) * 2);
+    }
 }

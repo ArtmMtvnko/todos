@@ -1,8 +1,18 @@
 .todo {
-    margin: 0 10px 10px 10px;
-    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    
+    margin: 0 0 10px 0;
+    padding: 12px 10px;
     border-radius: 5px;
 
     background-color: var(--window-color);
     cursor: pointer;
+    transition: 0.25s;
+
+    &:hover {
+        box-shadow: 3px 3px 3px #0000005f,
+            -2px -2px 2px #ffffff4f;
+        transform: translateX(-2px);
+    }
 }

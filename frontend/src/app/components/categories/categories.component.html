@@ -1,18 +1,7 @@
 <div class="categories-container">
     <div class="categories">
-        <ul>
-            <li>
-                <p>text 1</p>
-            </li>
-            <li>
-                <p>text 2</p>
-            </li>
-            <li>
-                <p>text 3</p>
-            </li>
-            <li>
-                <p>text 4</p>
-            </li>
-        </ul>
+        @for (category of categories; track category.id) {
+            <category [category]="category" />
+        }
     </div>
 </div>

@@ -1,0 +1,22 @@
+$side-padding: 4px;
+.category {
+    display: flex;
+    justify-content: space-between;
+
+    margin: 0 var(--category-margin) var(--category-margin)
+        var(--category-margin);
+    padding: 6px $side-padding;
+
+    cursor: pointer;
+    transition: 0.4s ease-out;
+
+    &:hover {
+        background-color: #4f4f4fe2;
+    }
+
+    &:focus {
+        background-color: #646464e2;
+        margin: 0 0 var(--category-margin) 0;
+        padding: 6px calc(var(--category-margin) + $side-padding);
+    }
+}
