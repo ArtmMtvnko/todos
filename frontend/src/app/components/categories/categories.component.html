@@ -1,7 +1,11 @@
-<div class="categories-container">
-    <div class="categories">
-        @for (category of categories; track category.id) {
-            <category [category]="category" />
-        }
+
+    <div class="categories-container">
+        <div class="categories">
+            @for (category of categories; track category.id) {
+                <category [category]="category" />
+            }
+        </div>
     </div>
-</div>
+    <div class="category-form-container">
+        <adding-form placeholder="New List"/>
+    </div>

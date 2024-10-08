@@ -1,5 +1,7 @@
 :host {
     grid-area: categories;
+
+    @apply flex flex-col justify-between;
 }
 
 .categories {
@@ -15,4 +17,8 @@
         transform: translateX(-50%);
         width: calc(100% - var(--category-margin) * 2);
     }
+}
+
+.category-form-container {
+    @apply mx-2 my-4;
 }

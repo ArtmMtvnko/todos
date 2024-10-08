@@ -1,0 +1,29 @@
+.adding-form {
+    @apply flex justify-around items-center;
+    @apply px-2.5 w-full h-10 rounded;
+    @apply bg-[var(--window-color)];
+}
+
+.plus-btn {
+    cursor: pointer;
+    transition: 0.2s;
+
+    &:hover {
+        filter: drop-shadow(0 0 4px #d7d7d7);
+    }
+}
+
+input[name="adding"] {
+    flex: 1;
+
+    margin: 0 10px;
+
+    background-color: transparent;
+    color: inherit;
+    caret-color: inherit;
+
+    &:focus {
+        outline: none;
+        border: none;
+    }
+}

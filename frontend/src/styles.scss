@@ -1,4 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
 
 :root {
     --window-border-radius: 8px;
@@ -21,7 +24,7 @@
 html, body {
     height: 100%;
 
-    background-image: url('../public/mountains.jpg');
+    background-image: url('/mountains.jpg');
     background-position: center;
     background-size: cover;
 
@@ -32,6 +35,8 @@ html, body {
 ul, ol { list-style: none; }
 
 input, button, textarea { font-family: inherit; }
+
+svg, img, p { user-select: none; }
 
 .rubbish-bin {
     transition: 0.2s;

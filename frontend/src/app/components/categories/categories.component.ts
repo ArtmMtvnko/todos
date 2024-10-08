@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { CategoryComponent } from '../category/category.component';
+import { AddingFormComponent } from '../adding-form/adding-form.component';
 
 @Component({
     selector: 'categories',
     standalone: true,
-    imports: [CategoryComponent],
+    imports: [CategoryComponent, AddingFormComponent],
     templateUrl: './categories.component.html',
     styleUrl: './categories.component.scss',
 })
