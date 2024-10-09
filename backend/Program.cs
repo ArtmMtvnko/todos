@@ -10,6 +10,17 @@ DotNetEnv.Env.Load();
 
 // Add services to the container.
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAllOrigins", policyBuilder =>
+    {
+        policyBuilder
+            .AllowAnyOrigin()
+            .AllowAnyMethod()
+            .AllowAnyHeader();
+    });
+});
+
 builder.Services.AddControllers();
 
 builder.Services.AddDbContext<DataContext>(options =>
@@ -35,6 +46,8 @@ builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
+
+app.UseCors("AllowAllOrigins");
 
 app.UseHttpsRedirection();
 
