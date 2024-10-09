@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Todo } from '../../types/todo.type';
 
 @Component({
     selector: 'todo',
@@ -7,5 +8,5 @@ import { Component, Input } from '@angular/core';
     styleUrl: './todo.component.scss',
 })
 export class TodoComponent {
-    @Input() todo: { title: string } = { title: 'Not displayed' };
+    @Input() todo?: Todo;
 }
