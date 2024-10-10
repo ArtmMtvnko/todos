@@ -22,4 +22,12 @@ export class HttpService {
     get<T>(path: string): Observable<T> {
         return this.http.get<T>(this.concatenateUrl(this.baseUrl, path));
     }
+
+    post<T>(path: string, body: unknown): Observable<T> {
+        return this.http.post<T>(this.concatenateUrl(this.baseUrl, path), body)
+    }
+
+    delete(path: string): Observable<void> {
+        return this.http.delete<void>(this.concatenateUrl(this.baseUrl, path))
+    }
 }

@@ -22,7 +22,14 @@ export class TodoService {
         });
     }
 
-    displayTodosWithCategoryId(id: string) {
+    displayTodosWithCategoryId(id: string): void {
         this.todos = this.todoStore.filter((todo) => todo.categoryId === id);
+    }
+
+    deleteTodoById(id: string): void {
+        this.httpService.delete(`${this.basePath}/${id}`).subscribe(() => {
+            this.todoStore = this.todoStore.filter((todo) => todo.id !== id);
+            this.todos = this.todos.filter((todo) => todo.id !== id);
+        });
     }
 }

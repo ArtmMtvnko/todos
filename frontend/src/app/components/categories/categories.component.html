@@ -1,11 +1,14 @@
-
-    <div class="categories-container">
-        <div class="categories">
-            @for (category of categoryService.categories; track category.id) {
-                <category [category]="category" />
-            }
-        </div>
+<div class="categories-container">
+    <div class="categories">
+        @for (category of categoryService.categories; track category.id) {
+        <category [category]="category" />
+        }
     </div>
-    <div class="category-form-container">
-        <adding-form placeholder="New List" />
-    </div>
+</div>
+<div class="category-form-container">
+    <adding-form
+        [submitHandler]="handleSubmit.bind(this)"
+        [formControl]="inputControl"
+        placeholder="New List"
+    />
+</div>

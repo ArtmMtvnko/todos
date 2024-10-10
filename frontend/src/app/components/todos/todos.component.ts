@@ -1,7 +1,8 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { TodoComponent } from '../todo/todo.component';
-import { AddingFormComponent } from "../adding-form/adding-form.component";
+import { AddingFormComponent } from '../adding-form/adding-form.component';
 import { TodoService } from '../../services/todo.service';
+import { FormControl } from '@angular/forms';
 
 @Component({
     selector: 'todos',
@@ -12,4 +13,5 @@ import { TodoService } from '../../services/todo.service';
 })
 export class TodosComponent {
     todoService = inject(TodoService);
+    inputControl = new FormControl('');
 }

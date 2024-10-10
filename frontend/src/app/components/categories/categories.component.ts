@@ -1,7 +1,8 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CategoryComponent } from '../category/category.component';
 import { AddingFormComponent } from '../adding-form/adding-form.component';
 import { CategoryService } from '../../services/category.service';
+import { FormControl } from '@angular/forms';
 
 @Component({
     selector: 'categories',
@@ -11,5 +12,21 @@ import { CategoryService } from '../../services/category.service';
     styleUrl: './categories.component.scss',
 })
 export class CategoriesComponent {
-    categoryService = inject(CategoryService)
+    categoryService = inject(CategoryService);
+    inputControl = new FormControl('');
+
+    handleSubmit(): void {
+        const categoryTitle = this.inputControl.value?.trim();
+
+        if (!categoryTitle) {
+            alert('Name of category cannot be empty!');
+            return;
+        }
+
+        this.categoryService.createCategory({
+            name: categoryTitle,
+        });
+
+        this.inputControl.reset();
+    }
 }
