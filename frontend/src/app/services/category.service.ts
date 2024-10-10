@@ -1,19 +1,27 @@
-import { HttpClient } from '@angular/common/http';
-import { inject, Injectable } from '@angular/core';
+import { inject, Injectable, OnInit } from '@angular/core';
 import { Category } from '../types/category.type';
+import { HttpService } from './http.service';
 
 @Injectable({
     providedIn: 'root',
 })
 export class CategoryService {
-    private http = inject(HttpClient);
-    private baseUrl = 'http://localhost:5143/api/category';
+    private httpService = inject(HttpService);
+    private basePath = '/category';
+    private categoriesStore: Category[] = [];
 
     categories: Category[] = [];
 
+    constructor() {
+        this.fetchCategories();
+    }
+
     fetchCategories(): void {
-        this.http.get<Category[]>(this.baseUrl).subscribe((categories) => {
-            this.categories = categories;
-        });
+        this.httpService
+            .get<Category[]>(this.basePath)
+            .subscribe((categories) => {
+                this.categoriesStore = categories;
+                this.categories = categories;
+            });
     }
 }

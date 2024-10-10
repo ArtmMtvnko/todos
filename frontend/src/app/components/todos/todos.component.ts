@@ -10,10 +10,6 @@ import { TodoService } from '../../services/todo.service';
     templateUrl: './todos.component.html',
     styleUrl: './todos.component.scss',
 })
-export class TodosComponent implements OnInit {
+export class TodosComponent {
     todoService = inject(TodoService);
-
-    ngOnInit(): void {
-        this.todoService.fetchTodos();
-    }
 }

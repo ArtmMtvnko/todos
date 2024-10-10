@@ -4,7 +4,7 @@ export interface Todo {
     id: string;
     title: string;
     content: string;
-    createdAt: Date;
+    createdAt: string;
     categoryId: string;
     category: Category;
 }

@@ -1,4 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, inject, Input } from '@angular/core';
+import { TodoService } from '../../services/todo.service';
+import { Category } from '../../types/category.type';
 
 @Component({
     selector: 'category',
@@ -7,5 +9,11 @@ import { Component, Input } from '@angular/core';
     styleUrl: './category.component.scss',
 })
 export class CategoryComponent {
-    @Input() category: { name: string } = { name: 'default category' };
+    @Input() category!: Category;
+
+    private todoService = inject(TodoService)
+
+    displayCorrespondingTodos() {
+        this.todoService.displayTodosWithCategoryId(this.category.id);
+    }
 }

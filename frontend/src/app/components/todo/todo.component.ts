@@ -8,5 +8,5 @@ import { Todo } from '../../types/todo.type';
     styleUrl: './todo.component.scss',
 })
 export class TodoComponent {
-    @Input() todo?: Todo;
+    @Input() todo!: Todo;
 }
