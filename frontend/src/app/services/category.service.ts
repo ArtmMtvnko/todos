@@ -34,4 +34,15 @@ export class CategoryService {
                 this.categories = [...this.categories, category];
             });
     }
+
+    deleteCategoryById(id: string): void {
+        this.httpService.delete(`${this.basePath}/${id}`).subscribe(() => {
+            this.categoriesStore = this.categoriesStore.filter(
+                (category) => category.id !== id
+            );
+            this.categories = this.categories.filter(
+                (category) => category.id !== id
+            );
+        });
+    }
 }

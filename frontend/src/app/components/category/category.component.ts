@@ -1,6 +1,7 @@
 import { Component, inject, Input } from '@angular/core';
 import { TodoService } from '../../services/todo.service';
 import { Category } from '../../types/category.type';
+import { CategoryService } from '../../services/category.service';
 
 @Component({
     selector: 'category',
@@ -11,9 +12,14 @@ import { Category } from '../../types/category.type';
 export class CategoryComponent {
     @Input() category!: Category;
 
-    private todoService = inject(TodoService)
+    private todoService = inject(TodoService);
+    private categoryService = inject(CategoryService);
 
     displayCorrespondingTodos() {
         this.todoService.displayTodosWithCategoryId(this.category.id);
+    }
+
+    deleteCategory(): void {
+        this.categoryService.deleteCategoryById(this.category.id);
     }
 }
