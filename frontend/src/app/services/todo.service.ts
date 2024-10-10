@@ -12,7 +12,7 @@ export class TodoService {
     todos: Todo[] = [];
 
     fetchTodos(): void {
-        this.http.get<Todo[]>(this.baseUrl).subscribe(todos => {
+        this.http.get<Todo[]>(this.baseUrl).subscribe((todos) => {
             this.todos = todos;
         });
     }
