@@ -7,5 +7,7 @@ import { Component, Input } from '@angular/core';
     styleUrl: './delete-button.component.scss',
 })
 export class DeleteButtonComponent {
-    @Input() deleteHandler!: () => void;
+    @Input() deleteHandler: () => void = () => {
+        throw new Error('You have to pass a delete handler into a component');
+    };;
 }

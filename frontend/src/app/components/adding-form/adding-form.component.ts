@@ -10,8 +10,22 @@ import { FormControl, ReactiveFormsModule } from '@angular/forms';
 })
 export class AddingFormComponent {
     @Input() placeholder: string = '';
-    @Input() formControl: FormControl = new FormControl('');
-    @Input() submitHandler: () => void = () => {
+    @Input() submitHandler: (fieldValue: string) => void = () => {
         throw new Error('You have to pass a submit handler into component');
     };
+
+    formControl: FormControl = new FormControl('');
+
+    submit() {
+        const fieldValue = this.formControl.value?.trim();
+
+        if (!fieldValue) {
+            alert('Filed cannot be empty!')
+            return
+        }
+
+        this.submitHandler(fieldValue)
+
+        this.formControl.reset()
+    }
 }
