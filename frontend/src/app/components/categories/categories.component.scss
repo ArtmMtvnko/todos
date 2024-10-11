@@ -6,15 +6,11 @@
 
 .categories {
     margin: var(--category-margin) 0;
-    position: relative;
+    @apply relative;
 
     &::after {
         content: '';
-        position: absolute;
-        height: 1px;
-        background-color: #9d9fa3d6;
-        left: 50%;
-        transform: translateX(-50%);
+        @apply absolute h-[1px] bg-[#9d9fa3d6] left-[50%] translate-x-[-50%];
         width: calc(100% - var(--category-margin) * 2);
     }
 }
