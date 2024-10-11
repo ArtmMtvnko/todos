@@ -5,7 +5,5 @@
     [class.active]="getActiveClassName()"
 >
     <p class="category-name">{{ category.name }}</p>
-    <button (click)="deleteCategory()">
-        <img class="rubbish-bin" src="/rubbish-bin.svg" alt="rubbish bin" />
-    </button>
+    <delete-button [deleteHandler]="deleteCategory.bind(this)" />
 </div>

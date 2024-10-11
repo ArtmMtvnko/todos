@@ -37,11 +37,3 @@ ul, ol { list-style: none; }
 input, button, textarea { font-family: inherit; }
 
 svg, img, p { user-select: none; }
-
-.rubbish-bin {
-    transition: 0.2s;
-    
-    &:hover {
-        filter: drop-shadow(0 0 4px #fca6a6);
-    }
-}

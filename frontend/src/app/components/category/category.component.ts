@@ -2,10 +2,12 @@ import { Component, inject, Input } from '@angular/core';
 import { TodoService } from '../../services/todo.service';
 import { Category } from '../../types/category.type';
 import { CategoryService } from '../../services/category.service';
+import { DeleteButtonComponent } from "../delete-button/delete-button.component";
 
 @Component({
     selector: 'category',
     standalone: true,
+    imports: [DeleteButtonComponent],
     templateUrl: './category.component.html',
     styleUrl: './category.component.scss',
 })

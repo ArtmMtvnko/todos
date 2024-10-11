@@ -1,6 +1,4 @@
 <div class="todo">
     <p class="todo-title">{{ todo.title }}</p>
-    <button (click)="deleteTodo()">
-        <img class="rubbish-bin" src="/rubbish-bin.svg" alt="rubbish bin" />
-    </button>
+    <delete-button [deleteHandler]="deleteTodo.bind(this)" />
 </div>

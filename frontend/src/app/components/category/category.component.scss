@@ -14,12 +14,6 @@ $side-padding: 4px;
         background-color: #4f4f4fe2;
     }
 
-    // &:focus {
-    //     background-color: #646464e2;
-    //     margin: 0 0 var(--category-margin) 0;
-    //     padding: 6px calc(var(--category-margin) + $side-padding);
-    // }
-
     &.active {
         background-color: #646464e2;
         margin: 0 0 var(--category-margin) 0;

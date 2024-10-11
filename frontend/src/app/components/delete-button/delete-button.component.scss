@@ -1,0 +1,7 @@
+.rubbish-bin {
+    transition: 0.2s;
+    
+    &:hover {
+        filter: drop-shadow(0 0 4px #fca6a6);
+    }
+}
