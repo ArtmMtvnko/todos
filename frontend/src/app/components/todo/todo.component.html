@@ -1,4 +1,11 @@
-<div class="todo">
-    <p class="todo-title">{{ todo.title }}</p>
+<div (dblclick)="editing = true" class="todo">
+    @if (editing) {
+        <editing-form
+            [submitHandler]="submitEditingHandler.bind(this)"
+            [initialValue]="todo.title"
+        />
+    } @else {
+        <p class="todo-title">{{ todo.title }}</p>
+    }
     <delete-button [deleteHandler]="deleteTodo.bind(this)" />
 </div>

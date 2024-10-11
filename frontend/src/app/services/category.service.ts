@@ -10,13 +10,7 @@ export class CategoryService {
     private httpService = inject(HttpService);
     private basePath = '/category';
 
-    private readonly ALL_CATEGORY = {
-        id: 'all',
-        name: 'all',
-        createdAt: '1970-01-01 15:15:50.51227+03',
-    } as const;
-
-    categories: Category[] = [this.ALL_CATEGORY];
+    categories: Category[] = [];
     activeCategory?: Category;
 
     constructor() {
@@ -35,7 +29,7 @@ export class CategoryService {
         this.httpService
             .post<Category>(this.basePath, body)
             .subscribe((category) => {
-                this.categories.push(category);
+                this.categories = [...this.categories, category];
             });
     }
 

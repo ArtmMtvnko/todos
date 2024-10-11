@@ -40,9 +40,9 @@ export class CategoryComponent {
         this.categoryService.deleteCategoryById(this.category.id);
     }
 
-    submitEditingHandler(fieldValue: string): void {
+    submitEditingHandler(editedName: string): void {
         this.categoryService.editCategory(this.category.id, {
-            name: fieldValue,
+            name: editedName,
         });
 
         this.editing = false;

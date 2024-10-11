@@ -34,6 +34,19 @@ export class TodoService {
         });
     }
 
+    editTodo(id: string, body: TodoDto) {
+        this.httpService
+            .put<Todo>(`${this.basePath}/${id}`, body)
+            .subscribe((editedTodo) => {
+                this.todoStore = this.todoStore.map((todo) =>
+                    todo.id === editedTodo.id ? editedTodo : todo
+                );
+                this.todos = this.todos.map((todo) =>
+                    todo.id === editedTodo.id ? editedTodo : todo
+                );
+            });
+    }
+
     deleteTodoById(id: string): void {
         this.httpService.delete(`${this.basePath}/${id}`).subscribe(() => {
             this.todoStore = this.todoStore.filter((todo) => todo.id !== id);
