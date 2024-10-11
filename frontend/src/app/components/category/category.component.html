@@ -6,7 +6,10 @@
     [class.active]="getActiveClassName()"
 >
     @if (editing) {
-        <editing-form [initialValue]="category.name" />
+        <editing-form
+            [submitHandler]="submitEditingHandler.bind(this)"
+            [initialValue]="category.name"
+        />
     } @else {
         <p class="category-name">{{ category.name }}</p>
     }

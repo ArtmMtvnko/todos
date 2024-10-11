@@ -10,9 +10,13 @@ export class CategoryService {
     private httpService = inject(HttpService);
     private basePath = '/category';
 
-    private readonly ALL_CATEGORY = { id: 'all', name: 'all', createdAt: '1970-01-01 15:15:50.51227+03' } as const;
-    
-    categories: Category[] = [this.ALL_CATEGORY]
+    private readonly ALL_CATEGORY = {
+        id: 'all',
+        name: 'all',
+        createdAt: '1970-01-01 15:15:50.51227+03',
+    } as const;
+
+    categories: Category[] = [this.ALL_CATEGORY];
     activeCategory?: Category;
 
     constructor() {
@@ -33,6 +37,18 @@ export class CategoryService {
             .subscribe((category) => {
                 this.categories.push(category);
             });
+    }
+
+    editCategory(id: string, body: CategoryDto): void {
+        this.httpService
+            .put<Category>(`${this.basePath}/${id}`, body)
+            .subscribe((editedCaregory) => [
+                (this.categories = this.categories.map((category) =>
+                    category.id === editedCaregory.id
+                        ? editedCaregory
+                        : category
+                )),
+            ]);
     }
 
     deleteCategoryById(id: string): void {

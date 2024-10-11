@@ -24,10 +24,14 @@ export class HttpService {
     }
 
     post<T>(path: string, body: unknown): Observable<T> {
-        return this.http.post<T>(this.concatenateUrl(this.baseUrl, path), body)
+        return this.http.post<T>(this.concatenateUrl(this.baseUrl, path), body);
+    }
+
+    put<T>(path: string, body: unknown): Observable<T> {
+        return this.http.put<T>(this.concatenateUrl(this.baseUrl, path), body);
     }
 
     delete(path: string): Observable<void> {
-        return this.http.delete<void>(this.concatenateUrl(this.baseUrl, path))
+        return this.http.delete<void>(this.concatenateUrl(this.baseUrl, path));
     }
 }

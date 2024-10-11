@@ -16,7 +16,7 @@ export class AddingFormComponent {
 
     formControl: FormControl = new FormControl('');
 
-    submit() {
+    submit(): void {
         const fieldValue = this.formControl.value?.trim();
 
         if (!fieldValue) {

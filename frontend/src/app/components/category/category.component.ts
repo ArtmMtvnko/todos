@@ -39,4 +39,12 @@ export class CategoryComponent {
     deleteCategory(): void {
         this.categoryService.deleteCategoryById(this.category.id);
     }
+
+    submitEditingHandler(fieldValue: string): void {
+        this.categoryService.editCategory(this.category.id, {
+            name: fieldValue,
+        });
+
+        this.editing = false;
+    }
 }

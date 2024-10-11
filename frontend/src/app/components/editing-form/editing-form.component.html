@@ -1,7 +1,9 @@
 <input
     #inputElement
+    (blur)="submit()"
+    (keydown.enter)="submit()"
+    [formControl]="formControl"
     type="text"
     name="editing"
     autocomplete="off"
-    [formControl]="formControl"
 />
