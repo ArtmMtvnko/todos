@@ -23,11 +23,11 @@ export class CategoryComponent {
             : '';
     }
 
-    setActive() {
+    setActive(): void {
         this.categoryService.activeCategory = this.category;
     }
 
-    displayCorrespondingTodos() {
+    displayCorrespondingTodos(): void {
         this.todoService.displayTodosWithCategoryId(this.category.id);
     }
 

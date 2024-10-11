@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { CategoryComponent } from '../category/category.component';
-import { AddingFormComponent } from '../adding-form/adding-form.component';
+import { AddingFormComponent } from '../shared/adding-form/adding-form.component';
 import { CategoryService } from '../../services/category.service';
 import { FormControl } from '@angular/forms';
 
