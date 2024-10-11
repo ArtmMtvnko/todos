@@ -4,5 +4,9 @@
             <todo [todo]="todo" />
         }
     </div>
-    <adding-form placeholder="Add a Task" />
+    <adding-form
+        [submitHandler]="handleSubmit.bind(this)"
+        [formControl]="inputControl"
+        placeholder="Add a Task"
+    />
 </div>

@@ -46,7 +46,6 @@ public class TodoRepository : ITodoRepository
         {
             Id = Guid.NewGuid(),
             Title = createTodoDto.Title,
-            Content = createTodoDto.Content,
             CreatedAt = DateTime.UtcNow,
             CategoryId = createTodoDto.CategoryId,
             Category = _context.Categories
@@ -72,7 +71,6 @@ public class TodoRepository : ITodoRepository
             throw new Exception($"Entity with id [{todoId}] has not been found");
 
         existedTodo.Title = updateTodoDto.Title;
-        existedTodo.Content = updateTodoDto.Content;
         existedTodo.CategoryId = updateTodoDto.CategoryId;
 
         bool saved = await Save();

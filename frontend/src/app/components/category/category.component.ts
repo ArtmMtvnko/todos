@@ -15,6 +15,10 @@ export class CategoryComponent {
     private todoService = inject(TodoService);
     private categoryService = inject(CategoryService);
 
+    setActive() {
+        this.categoryService.activeCategory = this.category;
+    }
+    
     displayCorrespondingTodos() {
         this.todoService.displayTodosWithCategoryId(this.category.id);
     }

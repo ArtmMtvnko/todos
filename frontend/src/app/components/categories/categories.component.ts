@@ -16,15 +16,15 @@ export class CategoriesComponent {
     inputControl = new FormControl('');
 
     handleSubmit(): void {
-        const categoryTitle = this.inputControl.value?.trim();
+        const categoryName = this.inputControl.value?.trim();
 
-        if (!categoryTitle) {
+        if (!categoryName) {
             alert('Name of category cannot be empty!');
             return;
         }
 
         this.categoryService.createCategory({
-            name: categoryTitle,
+            name: categoryName,
         });
 
         this.inputControl.reset();

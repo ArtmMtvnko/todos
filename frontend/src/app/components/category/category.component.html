@@ -1,4 +1,8 @@
-<div (click)="displayCorrespondingTodos()" tabindex="0" class="category">
+<div
+    (click)="displayCorrespondingTodos(); setActive()"
+    tabindex="0"
+    class="category"
+>
     <p class="category-name">{{ category.name }}</p>
     <button (click)="deleteCategory()">
         <img class="rubbish-bin" src="/rubbish-bin.svg" alt="rubbish bin" />

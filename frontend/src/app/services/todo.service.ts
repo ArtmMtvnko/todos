@@ -1,6 +1,7 @@
 import { inject, Injectable, OnInit } from '@angular/core';
 import { Todo } from '../types/todo.type';
 import { HttpService } from './http.service';
+import { TodoDto } from '../dto/todo.dto';
 
 @Injectable({
     providedIn: 'root',
@@ -24,6 +25,13 @@ export class TodoService {
 
     displayTodosWithCategoryId(id: string): void {
         this.todos = this.todoStore.filter((todo) => todo.categoryId === id);
+    }
+
+    createTodo(body: TodoDto) {
+        this.httpService.post<Todo>(this.basePath, body).subscribe((todo) => {
+            this.todoStore = [...this.todoStore, todo];
+            this.todos = [...this.todos, todo];
+        });
     }
 
     deleteTodoById(id: string): void {
