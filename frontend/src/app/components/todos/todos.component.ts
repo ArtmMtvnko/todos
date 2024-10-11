@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { TodoComponent } from '../todo/todo.component';
-import { AddingFormComponent } from '../shared/adding-form/adding-form.component';
+import { AddingFormComponent } from '../adding-form/adding-form.component';
 import { TodoService } from '../../services/todo.service';
 import { FormControl } from '@angular/forms';
 import { CategoryService } from '../../services/category.service';
