@@ -20,12 +20,12 @@ export class AddingFormComponent {
         const fieldValue = this.formControl.value?.trim();
 
         if (!fieldValue) {
-            alert('Filed cannot be empty!')
-            return
+            alert('Filed cannot be empty!');
+            return;
         }
 
-        this.submitHandler(fieldValue)
+        this.submitHandler(fieldValue);
 
-        this.formControl.reset()
+        this.formControl.reset();
     }
 }

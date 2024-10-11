@@ -2,12 +2,13 @@ import { Component, inject, Input } from '@angular/core';
 import { TodoService } from '../../services/todo.service';
 import { Category } from '../../types/category.type';
 import { CategoryService } from '../../services/category.service';
-import { DeleteButtonComponent } from "../delete-button/delete-button.component";
+import { DeleteButtonComponent } from '../delete-button/delete-button.component';
+import { EditingFormComponent } from '../editing-form/editing-form.component';
 
 @Component({
     selector: 'category',
     standalone: true,
-    imports: [DeleteButtonComponent],
+    imports: [DeleteButtonComponent, EditingFormComponent],
     templateUrl: './category.component.html',
     styleUrl: './category.component.scss',
 })
@@ -16,6 +17,8 @@ export class CategoryComponent {
 
     private todoService = inject(TodoService);
     private categoryService = inject(CategoryService);
+
+    editing = false;
 
     getActiveClassName(): 'active' | '' {
         if (!this.categoryService.activeCategory) return '';

@@ -1,0 +1,11 @@
+:host {
+    @apply flex-grow px-2.5;
+}
+
+input[name="editing"] {
+    @apply w-full bg-transparent text-inherit caret-inherit;
+
+    &:focus {
+        @apply outline-none bg-[#ffffff15];
+    }
+}

@@ -1,10 +1,8 @@
 $side-padding: 4px;
 .category {
-    display: flex;
-    justify-content: space-between;
+    @apply flex justify-between items-center;
 
-    margin: 0 var(--category-margin) var(--category-margin)
-        var(--category-margin);
+    margin: 0 var(--category-margin) var(--category-margin) var(--category-margin);
     padding: 6px $side-padding;
 
     cursor: pointer;

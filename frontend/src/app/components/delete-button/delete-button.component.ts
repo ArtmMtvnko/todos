@@ -9,5 +9,5 @@ import { Component, Input } from '@angular/core';
 export class DeleteButtonComponent {
     @Input() deleteHandler: () => void = () => {
         throw new Error('You have to pass a delete handler into a component');
-    };;
+    };
 }

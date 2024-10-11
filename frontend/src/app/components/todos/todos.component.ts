@@ -16,15 +16,16 @@ export class TodosComponent {
     categoryService = inject(CategoryService);
 
     handleSubmit(todoTitle: string): void {
-        const selectedCategory = this.categoryService.activeCategory
-        
+        const selectedCategory = this.categoryService.activeCategory;
+
         if (!selectedCategory) {
-            alert('Choose category where you want to add todo!')
-            return
+            alert('Choose category where you want to add todo!');
+            return;
         }
 
         this.todoService.createTodo({
             title: todoTitle,
-            categoryId: selectedCategory.id
+            categoryId: selectedCategory.id,
         });
-    }}
+    }
+}

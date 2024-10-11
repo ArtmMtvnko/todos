@@ -1,3 +1,11 @@
+:host {
+    @apply flex-shrink-0;
+}
+
+button {
+    @apply flex justify-center items-center;
+}
+
 .rubbish-bin {
     transition: 0.2s;
     
