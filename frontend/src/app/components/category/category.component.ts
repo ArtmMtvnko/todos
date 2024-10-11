@@ -15,10 +15,18 @@ export class CategoryComponent {
     private todoService = inject(TodoService);
     private categoryService = inject(CategoryService);
 
+    getActiveClassName(): 'active' | '' {
+        if (!this.categoryService.activeCategory) return '';
+
+        return this.categoryService.activeCategory.id === this.category.id
+            ? 'active'
+            : '';
+    }
+
     setActive() {
         this.categoryService.activeCategory = this.category;
     }
-    
+
     displayCorrespondingTodos() {
         this.todoService.displayTodosWithCategoryId(this.category.id);
     }

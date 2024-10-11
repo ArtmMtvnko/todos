@@ -2,6 +2,7 @@
     (click)="displayCorrespondingTodos(); setActive()"
     tabindex="0"
     class="category"
+    [class.active]="getActiveClassName()"
 >
     <p class="category-name">{{ category.name }}</p>
     <button (click)="deleteCategory()">
