@@ -1,12 +1,14 @@
 using backend.src.Interfaces;
 using backend.src.Models.Dto;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace backend.src.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public class CategoryController : Controller
+[Authorize]
+public class CategoryController : ControllerBase
 {
     private readonly ICategoryService _categoryService;
 

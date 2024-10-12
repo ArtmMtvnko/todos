@@ -1,8 +1,11 @@
+using System.Text;
 using backend.src.Data;
 using backend.src.Interfaces;
 using backend.src.Repository;
 using backend.src.Services;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -26,16 +29,33 @@ builder.Services.AddControllers();
 builder.Services.AddDbContext<DataContext>(options =>
 {
     var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-
-    connectionString = connectionString?
-        .Replace("${DB_HOST}", Environment.GetEnvironmentVariable("DB_HOST"))
-        .Replace("${DB_PORT}", Environment.GetEnvironmentVariable("DB_PORT"))
-        .Replace("${DB_DATABASE}", Environment.GetEnvironmentVariable("DB_DATABASE"))
-        .Replace("${DB_USERNAME}", Environment.GetEnvironmentVariable("DB_USERNAME"))
-        .Replace("${DB_PASSWORD}", Environment.GetEnvironmentVariable("DB_PASSWORD"));
-
     options.UseNpgsql(connectionString);
 });
+
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+})
+.AddJwtBearer(jwt =>
+{
+    var key = Encoding.UTF8.GetBytes(builder.Configuration["Jwt:SecretKey"]!);
+
+    jwt.SaveToken = true;
+
+    jwt.TokenValidationParameters = new TokenValidationParameters()
+    {
+        ValidateIssuerSigningKey = true,
+        IssuerSigningKey = new SymmetricSecurityKey(key),
+        ValidateIssuer = false,
+        ValidateAudience = false,
+        ValidateLifetime = true,
+        RequireExpirationTime = false
+    };
+});
+
+builder.Services.AddScoped<IAuthenticationService, AuthenticationService>();
 
 builder.Services.AddScoped<ITodoService, TodoService>();
 builder.Services.AddScoped<ITodoRepository, TodoRepository>();
@@ -51,6 +71,7 @@ app.UseCors("AllowAllOrigins");
 
 app.UseHttpsRedirection();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
