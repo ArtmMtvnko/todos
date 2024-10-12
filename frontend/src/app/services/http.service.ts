@@ -8,6 +8,17 @@ import { Observable } from 'rxjs';
 export class HttpService {
     private http = inject(HttpClient);
     private baseUrl = 'http://localhost:5143/api';
+    private jwtToken: string | null = localStorage.getItem('jwt_token_todo');
+    private bearerToken = 'Bearer ' + this.jwtToken;
+
+    get token(): string | null {
+        return this.jwtToken;
+    }
+
+    set token(value: string) {
+        this.jwtToken = value;
+        this.bearerToken = 'Bearer ' + value;
+    }
 
     private concatenateUrl(baseUrl: string, path: string): string {
         if (path.includes(' ')) throw new Error('Path must not contain spaces');
@@ -20,18 +31,30 @@ export class HttpService {
     }
 
     get<T>(path: string): Observable<T> {
-        return this.http.get<T>(this.concatenateUrl(this.baseUrl, path));
+        return this.http.get<T>(this.concatenateUrl(this.baseUrl, path), {
+            headers: { Authorization: this.bearerToken },
+        });
     }
 
     post<T>(path: string, body: unknown): Observable<T> {
-        return this.http.post<T>(this.concatenateUrl(this.baseUrl, path), body);
+        return this.http.post<T>(
+            this.concatenateUrl(this.baseUrl, path),
+            body,
+            {
+                headers: { Authorization: this.bearerToken },
+            }
+        );
     }
 
     put<T>(path: string, body: unknown): Observable<T> {
-        return this.http.put<T>(this.concatenateUrl(this.baseUrl, path), body);
+        return this.http.put<T>(this.concatenateUrl(this.baseUrl, path), body, {
+            headers: { Authorization: this.bearerToken },
+        });
     }
 
     delete(path: string): Observable<void> {
-        return this.http.delete<void>(this.concatenateUrl(this.baseUrl, path));
+        return this.http.delete<void>(this.concatenateUrl(this.baseUrl, path), {
+            headers: { Authorization: this.bearerToken },
+        });
     }
 }

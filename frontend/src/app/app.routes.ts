@@ -4,5 +4,5 @@ import { LoginComponent } from './components/login/login.component';
 
 export const routes: Routes = [
     { path: '', component: TodosTabComponent },
-    { path: 'login', component: LoginComponent}
+    { path: 'login', component: LoginComponent }
 ];
