@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
-import { CategoriesComponent } from "../categories/categories.component";
-import { TodosComponent } from "../todos/todos.component";
+import { CategoriesComponent } from '../categories/categories.component';
 
 @Component({
     selector: 'window',
     standalone: true,
-    imports: [CategoriesComponent, TodosComponent],
+    imports: [CategoriesComponent],
     templateUrl: './window.component.html',
     styleUrl: './window.component.scss',
 })

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { WindowComponent } from "./components/window/window.component";
+import { WindowComponent } from './components/window/window.component';
 
 @Component({
     selector: 'app-root',

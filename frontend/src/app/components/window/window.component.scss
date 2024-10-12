@@ -1,13 +1,11 @@
-.todo-container {
+.container {
+    @apply max-w-[1080px] my-0 mx-auto h-full;
+}
+
+.window-container {
     @apply flex justify-center items-center h-full;
 }
 
-.todo-window {
-    display: grid;
-    grid-template: 100px 1fr / 1fr 3fr;
-    grid-template-areas:
-        "account todos"
-        "categories todos";
-
+.window {
     @apply p-0 w-full h-[90vh] bg-[var(--window-color)] rounded-[var(--window-border-radius)];
 }
