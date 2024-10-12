@@ -1,4 +1,5 @@
 using backend.src.Interfaces;
+using backend.src.Models;
 using backend.src.Models.Dto;
 
 namespace backend.src.Services;
@@ -17,22 +18,22 @@ public class CategoryService : ICategoryService
         return await _categoryRepository.CategoryExist(categoryId);
     }
 
-    public async Task<IEnumerable<CategoryDto>> GetCategories()
+    public async Task<IEnumerable<Category>> GetCategories()
     {
         return await _categoryRepository.GetCategories();
     }
 
-    public async Task<CategoryDto> GetCategoryById(Guid categoryId)
+    public async Task<Category> GetCategoryById(Guid categoryId)
     {
         return await _categoryRepository.GetCategoryById(categoryId);
     }
 
-    public async Task<CategoryDto> CreateCategory(CreateCategoryDto createCategoryDto)
+    public async Task<Category> CreateCategory(CreateCategoryDto createCategoryDto)
     {
         return await _categoryRepository.CreateCategory(createCategoryDto);
     }
 
-    public async Task<CategoryDto> UpdateCategory(Guid categoryId, CreateCategoryDto updateCategoryDto)
+    public async Task<Category> UpdateCategory(Guid categoryId, CreateCategoryDto updateCategoryDto)
     {
         return await _categoryRepository.UpdateCategory(categoryId, updateCategoryDto);
     }

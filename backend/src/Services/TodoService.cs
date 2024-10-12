@@ -1,4 +1,5 @@
 using backend.src.Interfaces;
+using backend.src.Models;
 using backend.src.Models.Dto;
 
 namespace backend.src.Services;
@@ -17,25 +18,25 @@ public class TodoService : ITodoService
         return await _todoRepository.TodoExist(todoId);
     }
 
-    public async Task<IEnumerable<TodoDto>> GetTodos()
+    public async Task<IEnumerable<Todo>> GetTodos()
     {
         var todos = await _todoRepository.GetTodos();
         return todos;
     }
 
-    public async Task<TodoDto> GetTodoById(Guid todoId)
+    public async Task<Todo> GetTodoById(Guid todoId)
     {
         var todo = await _todoRepository.GetTodoById(todoId);
         return todo;
     }
 
-    public async Task<TodoDto> CreateTodo(CreateTodoDto createTodoDto)
+    public async Task<Todo> CreateTodo(CreateTodoDto createTodoDto)
     {
         var createdTodo = await _todoRepository.CreateTodo(createTodoDto);
         return createdTodo;
     }
 
-    public async Task<TodoDto> UpdateTodo(Guid todoId, CreateTodoDto updateTodoDto)
+    public async Task<Todo> UpdateTodo(Guid todoId, CreateTodoDto updateTodoDto)
     {
         var updatedTodoDto = await _todoRepository.UpdateTodo(todoId, updateTodoDto);
         return updatedTodoDto;

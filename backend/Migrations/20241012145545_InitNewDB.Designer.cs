@@ -12,8 +12,8 @@ using backend.src.Data;
 namespace backend.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20241005121412_RecreatedDbInitial")]
-    partial class RecreatedDbInitial
+    [Migration("20241012145545_InitNewDB")]
+    partial class InitNewDB
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -52,10 +52,6 @@ namespace backend.Migrations
                     b.Property<Guid>("CategoryId")
                         .HasColumnType("uuid");
 
-                    b.Property<string>("Content")
-                        .IsRequired()
-                        .HasColumnType("text");
-
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("timestamp with time zone");
 
@@ -73,17 +69,12 @@ namespace backend.Migrations
             modelBuilder.Entity("backend.src.Models.Todo", b =>
                 {
                     b.HasOne("backend.src.Models.Category", "Category")
-                        .WithMany("Todos")
+                        .WithMany()
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Category");
-                });
-
-            modelBuilder.Entity("backend.src.Models.Category", b =>
-                {
-                    b.Navigation("Todos");
                 });
 #pragma warning restore 612, 618
         }

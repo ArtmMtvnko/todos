@@ -6,5 +6,5 @@ public class Todo
     public required string Title { get; set; }
     public DateTime CreatedAt { get; set; }
     public Guid CategoryId { get; set; }
-    public required Category Category { get; set; }
+    public Category Category { get; set; } = null!;
 }

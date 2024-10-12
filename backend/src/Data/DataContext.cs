@@ -9,20 +9,14 @@ public class DataContext : DbContext
     public DataContext(DbContextOptions<DataContext> options) : base(options)
     {}
 
-    public DbSet<TodoDto> Todos { get; set; }
-    public DbSet<CategoryDto> Categories { get; set; }
+    public DbSet<Todo> Todos { get; set; }
+    public DbSet<Category> Categories { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Todo>()
             .HasOne(entity => entity.Category)
-            .WithMany(entity => entity.Todos)
-            .HasForeignKey(entity => entity.CategoryId)
-            .IsRequired();
-
-        modelBuilder.Entity<Category>()
-            .HasMany(entity => entity.Todos)
-            .WithOne(entity => entity.Category)
+            .WithMany()
             .HasForeignKey(entity => entity.CategoryId)
             .IsRequired();
     }

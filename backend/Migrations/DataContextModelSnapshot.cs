@@ -22,7 +22,7 @@ namespace backend.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("backend.Models.Category", b =>
+            modelBuilder.Entity("backend.src.Models.Category", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -40,7 +40,7 @@ namespace backend.Migrations
                     b.ToTable("Categories");
                 });
 
-            modelBuilder.Entity("backend.Models.Todo", b =>
+            modelBuilder.Entity("backend.src.Models.Todo", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -48,10 +48,6 @@ namespace backend.Migrations
 
                     b.Property<Guid>("CategoryId")
                         .HasColumnType("uuid");
-
-                    b.Property<string>("Content")
-                        .IsRequired()
-                        .HasColumnType("text");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("timestamp with time zone");
@@ -67,20 +63,15 @@ namespace backend.Migrations
                     b.ToTable("Todos");
                 });
 
-            modelBuilder.Entity("backend.Models.Todo", b =>
+            modelBuilder.Entity("backend.src.Models.Todo", b =>
                 {
-                    b.HasOne("backend.Models.Category", "Category")
-                        .WithMany("Todos")
+                    b.HasOne("backend.src.Models.Category", "Category")
+                        .WithMany()
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Category");
-                });
-
-            modelBuilder.Entity("backend.Models.Category", b =>
-                {
-                    b.Navigation("Todos");
                 });
 #pragma warning restore 612, 618
         }

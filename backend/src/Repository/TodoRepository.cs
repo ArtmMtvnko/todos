@@ -1,5 +1,6 @@
 using backend.src.Data;
 using backend.src.Interfaces;
+using backend.src.Models;
 using backend.src.Models.Dto;
 using Microsoft.EntityFrameworkCore;
 
@@ -24,7 +25,7 @@ public class TodoRepository : ITodoRepository
         return await _context.Todos.AnyAsync(todo => todo.Id == todoId);
     }
 
-    public async Task<ICollection<TodoDto>> GetTodos()
+    public async Task<ICollection<Todo>> GetTodos()
     {
         return await _context.Todos
             .OrderBy(todo => todo.CreatedAt)
@@ -32,7 +33,7 @@ public class TodoRepository : ITodoRepository
             .ToListAsync();
     }
 
-    public async Task<TodoDto> GetTodoById(Guid todoId)
+    public async Task<Todo> GetTodoById(Guid todoId)
     {
         return await _context.Todos
             .Where(todo => todo.Id == todoId)
@@ -40,9 +41,9 @@ public class TodoRepository : ITodoRepository
             .FirstAsync();
     }
 
-    public async Task<TodoDto> CreateTodo(CreateTodoDto createTodoDto)
+    public async Task<Todo> CreateTodo(CreateTodoDto createTodoDto)
     {        
-        var createdTodo = new TodoDto()
+        var createdTodo = new Todo()
         {
             Id = Guid.NewGuid(),
             Title = createTodoDto.Title,
@@ -63,7 +64,7 @@ public class TodoRepository : ITodoRepository
         return createdTodo;
     }
 
-    public async Task<TodoDto> UpdateTodo(Guid todoId, CreateTodoDto updateTodoDto)
+    public async Task<Todo> UpdateTodo(Guid todoId, CreateTodoDto updateTodoDto)
     {
         var existedTodo = await GetTodoById(todoId);
 

@@ -1,5 +1,6 @@
 using backend.src.Data;
 using backend.src.Interfaces;
+using backend.src.Models;
 using backend.src.Models.Dto;
 using Microsoft.EntityFrameworkCore;
 
@@ -25,14 +26,14 @@ public class CategoryRepository : ICategoryRepository
         return await _context.Categories.AnyAsync(category => category.Id == categoryId);
     }
 
-    public async Task<ICollection<CategoryDto>> GetCategories()
+    public async Task<ICollection<Category>> GetCategories()
     {
         return await _context.Categories
             .OrderBy(category => category.CreatedAt)
             .ToListAsync();
     }
 
-    public async Task<CategoryDto> GetCategoryById(Guid categoryId)
+    public async Task<Category> GetCategoryById(Guid categoryId)
     {
         var category = await _context.Categories.FindAsync(categoryId);
 
@@ -42,9 +43,9 @@ public class CategoryRepository : ICategoryRepository
         return category;
     }
 
-    public async Task<CategoryDto> CreateCategory(CreateCategoryDto createCategoryDto)
+    public async Task<Category> CreateCategory(CreateCategoryDto createCategoryDto)
     {
-        var createdCategory = new CategoryDto()
+        var createdCategory = new Category()
         {
             Id = Guid.NewGuid(),
             Name = createCategoryDto.Name,
@@ -61,7 +62,7 @@ public class CategoryRepository : ICategoryRepository
         return createdCategory;
     }
 
-    public async Task<CategoryDto> UpdateCategory(Guid categoryId, CreateCategoryDto updateCategoryDto)
+    public async Task<Category> UpdateCategory(Guid categoryId, CreateCategoryDto updateCategoryDto)
     {
         var existedCategory = await GetCategoryById(categoryId);
 
