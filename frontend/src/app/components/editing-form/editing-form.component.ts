@@ -24,7 +24,7 @@ export class EditingFormComponent implements AfterViewInit, OnInit {
     };
 
     private eventHandled!: boolean;
-    
+
     formControl!: FormControl;
 
     ngOnInit(): void {
@@ -38,7 +38,7 @@ export class EditingFormComponent implements AfterViewInit, OnInit {
 
     submit(): void {
         if (this.eventHandled) return;
-        
+
         const fieldValue = this.formControl.value?.trim();
 
         if (!fieldValue) {
@@ -46,13 +46,8 @@ export class EditingFormComponent implements AfterViewInit, OnInit {
             return;
         }
 
-        if (this.initialValue === fieldValue) {
-            return;
-        }
-
         this.submitHandler(fieldValue);
 
-        this.formControl.reset();
         this.eventHandled = true;
     }
 }

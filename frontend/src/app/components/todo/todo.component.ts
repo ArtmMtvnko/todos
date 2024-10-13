@@ -32,6 +32,11 @@ export class TodoComponent {
             return;
         }
 
+        if (editedTitle === this.todo.title) {
+            this.editing = false;
+            return;
+        }
+
         this.todoService.editTodo(this.todo.id, {
             title: editedTitle,
             categoryId: selectedCategory.id,
