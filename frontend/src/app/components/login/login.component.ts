@@ -30,12 +30,18 @@ export class LoginComponent {
             return;
         }
 
-        this.loginService.login({
-            username: this.loginForm.value.username!,
-            password: this.loginForm.value.password!,
-        });
-
-        this.loginForm.reset();
-        this.route.navigate(['']);
+        this.loginService.login(
+            {
+                username: this.loginForm.value.username!,
+                password: this.loginForm.value.password!,
+            },
+            () => {
+                this.loginForm.reset();
+                this.route.navigate(['']);
+            },
+            () => {
+                alert('Wrong credentials!');
+            }
+        );
     }
 }

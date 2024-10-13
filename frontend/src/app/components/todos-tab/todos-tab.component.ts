@@ -12,12 +12,19 @@ import { Router } from '@angular/router';
     styleUrl: './todos-tab.component.scss',
 })
 export class TodosTabComponent implements OnInit {
-    private loginService = inject(LoginService)
-    private router = inject(Router)
+    private loginService = inject(LoginService);
+    private router = inject(Router);
 
     ngOnInit(): void {
-        if (!this.loginService.token) {
-            this.router.navigate(['/login'])
+        const jwtToken = this.loginService.token;
+
+        if (!jwtToken) {
+            this.router.navigate(['/login']);
+            return;
+        }
+
+        if (this.loginService.tokenExpired(jwtToken)) {
+            this.router.navigate(['/login']);
         }
     }
 }
