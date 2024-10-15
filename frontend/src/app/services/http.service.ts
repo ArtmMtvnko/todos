@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { LocalStorage } from '../components/enums/LocalStorage';
 
 @Injectable({
     providedIn: 'root',
@@ -8,14 +9,14 @@ import { Observable } from 'rxjs';
 export class HttpService {
     private http = inject(HttpClient);
     private baseUrl = 'http://localhost:5143/api';
-    private jwtToken: string | null = localStorage.getItem('jwt_token_todo');
+    private jwtToken: string | null = localStorage.getItem(LocalStorage.Token);
     private bearerToken = 'Bearer ' + this.jwtToken;
 
     get token(): string | null {
         return this.jwtToken;
     }
 
-    set token(value: string) {
+    set token(value: string | null) {
         this.jwtToken = value;
         this.bearerToken = 'Bearer ' + value;
     }

@@ -2,6 +2,7 @@ import { inject, Injectable } from '@angular/core';
 import { LoginDto } from '../dto/login.dto';
 import { HttpService } from './http.service';
 import { jwtDecode } from 'jwt-decode';
+import { LocalStorage } from '../components/enums/LocalStorage';
 
 @Injectable({
     providedIn: 'root',
@@ -16,7 +17,7 @@ export class LoginService {
         return this.jwtToken;
     }
 
-    set token(value: string) {
+    set token(value: string | null) {
         this.jwtToken = value;
         this.httpService.token = value;
     }
@@ -31,7 +32,7 @@ export class LoginService {
             .subscribe({
                 next: (response) => {
                     this.token = response.token;
-                    localStorage.setItem('jwt_token_todo', response.token);
+                    localStorage.setItem(LocalStorage.Token, response.token);
 
                     if (onFullFill) onFullFill();
                 },
@@ -53,5 +54,10 @@ export class LoginService {
         } catch {
             return true;
         }
+    }
+
+    resetToken(): void {
+        this.token = null;
+        localStorage.removeItem(LocalStorage.Token);
     }
 }

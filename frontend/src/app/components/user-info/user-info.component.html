@@ -3,7 +3,12 @@
         <span>{{ name[0] }}</span>
     </div>
     <p>{{ name }}</p>
-    <button >
-        <img class="log-out-button" src="logout.svg" alt="log out" />
+    <button>
+        <img
+            (click)="logout()"
+            class="log-out-button"
+            src="logout.svg"
+            alt="log out"
+        />
     </button>
 </div>
