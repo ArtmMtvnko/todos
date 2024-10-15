@@ -1,3 +1,7 @@
+:host {
+    @apply flex-grow;
+}
+
 .adding-form {
     @apply flex justify-around items-center;
     @apply px-2.5 w-full h-10 rounded;

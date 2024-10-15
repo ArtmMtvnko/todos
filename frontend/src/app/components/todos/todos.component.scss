@@ -7,8 +7,11 @@
 .todos-container {
     @apply flex flex-col justify-between;
     @apply m-0 px-2.5 py-[15px] h-full;
-    @apply rounded-r-[var(--window-border-radius)];
+    @apply rounded-r-[var(--window-border-radius)] bg-cover;
 
     background-image: url("/show.jpg");
-    background-size: cover;
+}
+
+.todos-tools {
+    @apply flex justify-between items-center gap-2.5;
 }

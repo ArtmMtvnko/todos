@@ -4,6 +4,7 @@ import { Category } from '../../types/category.type';
 import { CategoryService } from '../../services/category.service';
 import { DeleteButtonComponent } from '../delete-button/delete-button.component';
 import { EditingFormComponent } from '../editing-form/editing-form.component';
+import { PageService } from '../../services/page.service';
 
 @Component({
     selector: 'category',
@@ -17,6 +18,7 @@ export class CategoryComponent {
 
     private todoService = inject(TodoService);
     private categoryService = inject(CategoryService);
+    private pageService = inject(PageService);
 
     editing = false;
 
@@ -34,6 +36,7 @@ export class CategoryComponent {
 
     displayCorrespondingTodos(): void {
         this.todoService.displayTodosWithCategoryId(this.category.id);
+        this.pageService.resetPages();
     }
 
     deleteCategory(): void {

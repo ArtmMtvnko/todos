@@ -3,11 +3,12 @@ import { TodoComponent } from '../todo/todo.component';
 import { AddingFormComponent } from '../adding-form/adding-form.component';
 import { TodoService } from '../../services/todo.service';
 import { CategoryService } from '../../services/category.service';
+import { PageNavComponent } from '../page-nav/page-nav.component';
 
 @Component({
     selector: 'todos',
     standalone: true,
-    imports: [TodoComponent, AddingFormComponent],
+    imports: [TodoComponent, AddingFormComponent, PageNavComponent],
     templateUrl: './todos.component.html',
     styleUrl: './todos.component.scss',
 })

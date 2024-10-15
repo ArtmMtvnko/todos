@@ -23,8 +23,31 @@ export class TodoService {
         });
     }
 
-    displayTodosWithCategoryId(id: string): void {
-        this.todos = this.todoStore.filter((todo) => todo.categoryId === id);
+    getAmountOfTodosInCategory(id: string): number {
+        return this.todoStore.reduce((acc, todo) => {
+            return todo.categoryId === id ? acc + 1 : acc;
+        }, 0);
+    }
+
+    displayTodosWithCategoryId(
+        id: string,
+        page: number = 1,
+        todosPerPage: number = 10
+    ): void {
+        const skipNTodos = (page - 1) * todosPerPage;
+        const showNTodos = todosPerPage + skipNTodos;
+
+        const allCorrespondingTodos = this.todoStore.filter(
+            (todo) => todo.categoryId === id
+        );
+
+        if (allCorrespondingTodos.length < skipNTodos) {
+            throw new Error("Can't show more todos");
+        }
+
+        this.todos = allCorrespondingTodos.slice(skipNTodos, showNTodos);
+
+        // this.todos = this.todoStore.filter((todo) => todo.categoryId === id);
     }
 
     createTodo(body: TodoDto) {

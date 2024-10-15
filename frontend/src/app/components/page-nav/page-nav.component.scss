@@ -1,0 +1,23 @@
+:host {
+    @apply bg-[var(--window-color)] p-1.5 rounded;
+}
+
+.page-navigation {
+    @apply flex justify-center items-center gap-1;
+}
+
+p {
+    @apply text-xl;
+}
+
+svg {
+    @apply fill-[#85868a];
+
+    &:last-child {
+        @apply rotate-180;
+    }
+}
+
+svg.active {
+    @apply fill-[#dce0ee] cursor-pointer;
+}

@@ -4,8 +4,11 @@
             <todo [todo]="todo" />
         }
     </div>
-    <adding-form
-        [submitHandler]="handleSubmit.bind(this)"
-        placeholder="Add a Task"
-    />
+    <div class="todos-tools">
+        <adding-form
+            [submitHandler]="handleSubmit.bind(this)"
+            placeholder="Add a Task"
+        />
+        <page-nav />
+    </div>
 </div>
