@@ -2,7 +2,7 @@ import { inject, Injectable } from '@angular/core';
 import { LoginDto } from '../dto/login.dto';
 import { HttpService } from './http.service';
 import { jwtDecode } from 'jwt-decode';
-import { LocalStorage } from '../components/enums/LocalStorage';
+import { LocalStorage } from '../components/enums/local-storage.enum';
 
 @Injectable({
     providedIn: 'root',

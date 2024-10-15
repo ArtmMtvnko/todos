@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { LocalStorage } from '../components/enums/LocalStorage';
+import { LocalStorage } from '../components/enums/local-storage.enum';
 
 @Injectable({
     providedIn: 'root',

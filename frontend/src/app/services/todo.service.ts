@@ -2,6 +2,7 @@ import { inject, Injectable, OnInit } from '@angular/core';
 import { Todo } from '../types/todo.type';
 import { HttpService } from './http.service';
 import { TodoDto } from '../dto/todo.dto';
+import { Pagination } from '../components/enums/pagination.enum';
 
 @Injectable({
     providedIn: 'root',
@@ -32,7 +33,7 @@ export class TodoService {
     displayTodosWithCategoryId(
         id: string,
         page: number = 1,
-        todosPerPage: number = 10
+        todosPerPage: number = Pagination.TodosPerPage
     ): void {
         const skipNTodos = (page - 1) * todosPerPage;
         const showNTodos = todosPerPage + skipNTodos;
