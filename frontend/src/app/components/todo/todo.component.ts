@@ -4,6 +4,7 @@ import { TodoService } from '../../services/todo.service';
 import { DeleteButtonComponent } from '../delete-button/delete-button.component';
 import { EditingFormComponent } from '../editing-form/editing-form.component';
 import { CategoryService } from '../../services/category.service';
+import { PageService } from '../../services/page.service';
 
 @Component({
     selector: 'todo',
@@ -17,10 +18,14 @@ export class TodoComponent {
 
     private todoService = inject(TodoService);
     private categoryService = inject(CategoryService);
+    private pageService = inject(PageService);
 
     editing = false;
 
     deleteTodo(): void {
+        if (this.todoService.todos.length === 1 && this.pageService.page > 1)
+            this.pageService.goToThePreviousPage();
+
         this.todoService.deleteTodoById(this.todo.id);
     }
 

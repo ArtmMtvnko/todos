@@ -79,4 +79,21 @@ export class PageService {
             this.page
         );
     }
+
+    goToThePreviousPage(): void {
+        const selectedCategory = this.categoryService.activeCategory;
+
+        if (!selectedCategory) return;
+
+        this.page--;
+
+        this.todoService.displayTodosWithCategoryId(
+            selectedCategory.id,
+            this.page
+        );
+    }
+
+//     BugFix. Fixed another bug with pagination.
+// Now if you delete todo and it was last todo in the page,
+// then it automaticly returns to to the previous page.
 }

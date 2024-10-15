@@ -21,7 +21,6 @@ export class TodosComponent {
 
     handleSubmit(todoTitle: string): void {
         if (this.pageService.pageFull()) {
-            console.log('FULL')
             this.pageService.goToTheLastPage();
         }
         
