@@ -92,8 +92,4 @@ export class PageService {
             this.page
         );
     }
-
-//     BugFix. Fixed another bug with pagination.
-// Now if you delete todo and it was last todo in the page,
-// then it automaticly returns to to the previous page.
 }
