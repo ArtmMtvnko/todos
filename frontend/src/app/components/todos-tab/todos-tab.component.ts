@@ -3,11 +3,12 @@ import { CategoriesComponent } from '../categories/categories.component';
 import { TodosComponent } from '../todos/todos.component';
 import { LoginService } from '../../services/login.service';
 import { Router } from '@angular/router';
+import { UserInfoComponent } from '../user-info/user-info.component';
 
 @Component({
     selector: 'todo-tab',
     standalone: true,
-    imports: [CategoriesComponent, TodosComponent],
+    imports: [UserInfoComponent, CategoriesComponent, TodosComponent],
     templateUrl: './todos-tab.component.html',
     styleUrl: './todos-tab.component.scss',
 })

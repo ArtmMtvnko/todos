@@ -1,0 +1,22 @@
+:host {
+    grid-area: account;
+}
+
+.user-info-container {
+    @apply flex justify-around items-center;
+    @apply h-full mx-2.5;
+}
+
+.profile-photo {
+    @apply w-10 h-10 bg-blue-200 rounded-[50%];
+    @apply text-gray-950 font-semibold text-3xl text-center;
+}
+
+.log-out-button {
+    @apply cursor-pointer;
+    transition: 0.2s;
+
+    &:hover {
+        filter: drop-shadow(0 0 4px #d7d7d7);
+    }
+}
