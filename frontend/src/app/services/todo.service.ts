@@ -47,8 +47,13 @@ export class TodoService {
         }
 
         this.todos = allCorrespondingTodos.slice(skipNTodos, showNTodos);
+    }
 
-        // this.todos = this.todoStore.filter((todo) => todo.categoryId === id);
+    displayTodosWithTitle(title: string) {
+        const query = title.trim().toLowerCase();
+        this.todos = this.todoStore.filter(
+            (todo) => todo.title.toLowerCase().includes(query)
+        );
     }
 
     createTodo(body: TodoDto) {

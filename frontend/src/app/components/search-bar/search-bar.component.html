@@ -1,9 +1,15 @@
 <div class="search-bar">
-    <img class="magnifying-glass" src="magnifying-glass.svg" alt="magnifying-glass" />
+    <img
+        class="magnifying-glass"
+        src="magnifying-glass.svg"
+        alt="magnifying-glass"
+    />
     <input
+        (keydown.enter)="search()"
         placeholder="Search"
         type="text"
         name="searching"
         autocomplete="off"
+        [formControl]="searchField"
     />
 </div>

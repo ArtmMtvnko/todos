@@ -15,3 +15,23 @@
 .todos-tools {
     @apply flex justify-between items-center gap-2.5;
 }
+
+.todos[no-selected-category="true"] {
+    @apply overflow-y-auto mb-2.5 pr-1;
+
+    &::-webkit-scrollbar {
+        @apply w-2 ml-1;
+    }
+        
+    &::-webkit-scrollbar-track {
+        @apply bg-transparent;
+    }
+        
+    &::-webkit-scrollbar-thumb {
+        @apply rounded bg-[#0000008b];
+
+        &:hover {
+            @apply bg-[#00000079];
+        }
+    }
+}

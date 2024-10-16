@@ -6,7 +6,6 @@ import { PageService } from '../../services/page.service';
 @Component({
     selector: 'page-nav',
     standalone: true,
-    imports: [],
     templateUrl: './page-nav.component.html',
     styleUrl: './page-nav.component.scss',
 })

@@ -1,5 +1,5 @@
 <div class="todos-container">
-    <div class="todos">
+    <div class="todos" [attr.no-selected-category]="!categoryService.activeCategory">
         @for (todo of todoService.todos; track todo.id) {
             <todo [todo]="todo" />
         }
