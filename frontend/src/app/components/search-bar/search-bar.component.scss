@@ -1,0 +1,13 @@
+:host {
+    grid-area: search;
+}
+
+.search-bar {
+    @apply flex justify-center items-center gap-2;
+    @apply py-1 px-2.5 mx-2.5;
+    @apply bg-[#cccccc37] rounded-md;
+}
+
+input[name="searching"] {
+    @apply flex-grow bg-transparent outline-none;
+}
